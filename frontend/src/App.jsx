@@ -8,6 +8,7 @@ function App() {
   return(
     <div>
     <h1>Code Arena</h1>
+    <h2>Coding tool</h2>
   </div>
   )
 }

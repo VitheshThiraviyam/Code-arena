@@ -1,0 +1,7 @@
+function Adminhome() {
+    return (
+        <>
+        
+        </>
+    )
+}

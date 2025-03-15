@@ -1,42 +1,147 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Full-screen background */
+.login-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f4f8; /* Solid background color */
+}
+
+/* Centered form container */
+.login-container {
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Title */
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Heading for form */
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Input container */
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Input field styles */
+.input-field {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+  background-color: #f9f9f9; /* Solid background color */
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+/* Hover effect */
+.input-field:hover {
+  border-color: #00b4d8;
+}
+
+/* Focus effect */
+.input-field:focus {
+  border-color: #00b4d8;
+  box-shadow: 0 0 5px rgba(0, 180, 216, 0.3);
+  background-color: #f1f8ff; /* Slightly different solid background color on focus */
+}
+
+/* Label position and styling */
+label {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  font-size: 16px;
+  color: #aaa;
+  transition: all 0.3s ease;
+  pointer-events: none; /* Prevent label from interfering with input */
+}
+
+/* Placeholder text styling: hide it when the input is focused or typing starts */
+.input-field:focus::placeholder {
+  opacity: 0; /* Hide placeholder text when focused */
+}
+.input-field:not(:placeholder-shown)::placeholder {
+  opacity: 0; /* Hide placeholder text when the user starts typing */
+}
+
+/* Error message */
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* Submit button styles */
+.submit-button {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #00b4d8;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #0099c3;
+}
+
+.submit-button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 30px 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .title {
+    font-size: 28px;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  h2 {
+    font-size: 20px;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .input-field {
+    font-size: 14px;
+    padding: 10px;
+  }
 
-.read-the-docs {
-  color: #888;
+  .submit-button {
+    font-size: 16px;
+  }
 }

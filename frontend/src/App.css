@@ -1,4 +1,6 @@
 /* General Reset */
+body{
+}
 * {
   margin: 0;
   padding: 0;
@@ -121,8 +123,197 @@ label {
 .submit-button:active {
   transform: scale(0.98);
 }
+/*Home components*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-/* Responsive Design */
+.head {
+  color: rgb(117, 81, 87);
+}
+
+.navitems {
+  display: flex;
+}
+
+.navitems a {
+  margin-right: 20px;
+  color: #0077b6;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.navitems a:hover {
+  color: black;
+  transform: scale(1.1);
+  text-decoration: underline;
+}
+
+.navitems a:active {
+  color: black;
+  transform: scale(0.95);
+}
+
+.main {
+  text-align: center;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  font-size: 28px;
+  color: #0077b6;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.join-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.join-btn:hover {
+  background: linear-gradient(135deg, #0099c3, #005f91);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+.advantages {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 900px;
+}
+
+.advantages h2 {
+  font-size: 26px;
+  color: #0077b6;
+  margin-bottom: 20px;
+}
+
+.advantage-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.advantage-card {
+  padding: 15px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.advantage-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.advantage-img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.advantage-card h3 {
+  font-size: 18px;
+  color: #005f91;
+  margin-bottom: 10px;
+}
+
+.advantage-card p {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .navitems {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .navitems.open {
+    display: flex;
+  }
+
+  .navitems a {
+    display: block;
+    padding: 12px;
+    font-size: 18px;
+    width: 100%;
+  }
+
+  .main {
+    width: 90%;
+    margin: 30px auto;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .join-btn {
+    font-size: 16px;
+    padding: 8px 15px;
+  }
+}
+
 @media (max-width: 480px) {
   .login-container {
     padding: 30px 20px;

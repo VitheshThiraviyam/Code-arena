@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
     const [menuOpen, setMenuOpen] = useState(false);
-
+    
     const advantages = [
         {
             title: "Improve Coding Skills",

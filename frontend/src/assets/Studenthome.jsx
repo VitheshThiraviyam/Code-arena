@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import "./Studenthome.css";
+import "./StudentDashboard.css";
 
-function StudentHome() {
+function StudentDashboard() {
     const [userName, setUserName] = useState("Student");
     const [performance, setPerformance] = useState({ score: 0, rank: "N/A" });
     const [practiceProblems, setPracticeProblems] = useState([]);
@@ -24,25 +24,25 @@ function StudentHome() {
     }, []);
 
     return (
-        <div className="container">
+        <div className="dashboard-container">
             <h1>Welcome, {userName}!</h1>
-            <div className="section">
+            <div className="dashboard-section">
                 <h2>Performance</h2>
-                <a href="/performance" className="problem-box">
+                <a href="/performance" className="dashboard-box">
                     View Performance (Score: {performance.score}, Rank: {performance.rank})
                 </a>
             </div>
-            <div className="section">
+            <div className="dashboard-section">
                 <h2>Practice Problems</h2>
-                <div className="practice-grid">
+                <div className="dashboard-grid">
                     {practiceProblems.map((problem, index) => (
-                        <a key={index} href={problem.link} target="_blank" rel="noopener noreferrer" className="problem-box">
+                        <a key={index} href={problem.link} target="_blank" rel="noopener noreferrer" className="dashboard-box">
                             {problem.title}
                         </a>
                     ))}
                 </div>
             </div>
-            <div className="section">
+            <div className="dashboard-section">
                 <h2>Next Available Contest</h2>
                 {nextContest ? (
                     <p>{nextContest.name} - {nextContest.date}</p>
@@ -50,7 +50,7 @@ function StudentHome() {
                     <p>No upcoming contests</p>
                 )}
             </div>
-            <div className="section">
+            <div className="dashboard-section">
                 <h2>Study Materials & Resources</h2>
                 <ul>
                     {resources.map((resource, index) => (
@@ -64,4 +64,4 @@ function StudentHome() {
     );
 }
 
-export default StudentHome;
+export default StudentDashboard;

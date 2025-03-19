@@ -5,10 +5,12 @@ import Home from './assets/Home';
 import {Route,Routes} from 'react-router-dom'
 import StudentHome from './assets/Studenthome';
 import AboutUs from './assets/AboutUs';
+import Header from './assets/Header';
 
 function App() {
   return(
     <div>
+      <Header/>
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/Facultylogin' element={<FacultyLogin/>}></Route>

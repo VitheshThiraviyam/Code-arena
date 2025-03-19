@@ -22,7 +22,6 @@ function StudentDashboard() {
             { title: "React Docs", link: "https://react.dev" },
         ]);
     }, []);
-
     return (
         <div className="dashboard-container">
             <h1>Welcome, {userName}!</h1>

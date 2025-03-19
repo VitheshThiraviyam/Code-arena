@@ -1,10 +1,7 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 
 function Home() {
-    const [menuOpen, setMenuOpen] = useState(false);
-    
     const advantages = [
         {
             title: "Improve Coding Skills",
@@ -41,22 +38,7 @@ function Home() {
 
     return (
         <>
-            <div className="home">
-                <div className="header">
-                    <div className="head">
-                        <h1>CODE ARENA</h1>
-                    </div>
-                    <button className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
-                        ☰
-                    </button>
-                    <div className={`navitems ${menuOpen ? "open" : ""}`}>
-                        <Link to='/'>Home</Link>
-                        <Link to='/Facultylogin'>Faculty Login</Link>
-                        <Link to='/Studentlogin'>Student Login</Link>
-                        <Link href="">About Us</Link>
-                    </div>
-                </div>
-            </div>
+
             <div className="main">
                 <h1>Welcome to Code Arena</h1>
                 <p>

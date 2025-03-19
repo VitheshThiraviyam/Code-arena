@@ -54,7 +54,7 @@ function Home() {
                     Join the platform, test your skills, and compete with peers in an engaging coding
                     environment!
                 </p>
-                <button className="join-btn">Get Started</button>
+                <Link to='/Studentlogin' className="join-btn"> Get Started</Link>
             </div>
 
             <div className="advantages">

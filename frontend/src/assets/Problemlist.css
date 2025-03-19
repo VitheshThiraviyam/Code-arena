@@ -1,0 +1,57 @@
+.problem-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+}
+
+.problem-card {
+    width: 90%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Title styling */
+.problem-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.problem-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.problem-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s ease-in-out;
+}
+
+.problem-item:last-child {
+    border-bottom: none;
+}
+
+.problem-item:hover {
+    background: #f0f0f5;
+}
+
+.problem-link {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #007bff;
+    transition: color 0.3s ease-in-out;
+}
+
+.problem-link:hover {
+    color: #0056b3;
+}

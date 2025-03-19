@@ -199,7 +199,7 @@ p {
 }
 
 .join-btn:hover {
-  background: linear-gradient(135deg, #0099c3, #005f91);
+  background: linear-gradient(135deg, #dee6e9, #b4d3e4);
   transform: scale(1.05);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }

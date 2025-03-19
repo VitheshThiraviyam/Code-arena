@@ -6,6 +6,7 @@ import {Route,Routes} from 'react-router-dom'
 import StudentHome from './assets/Studenthome';
 import AboutUs from './assets/AboutUs';
 import Header from './assets/Header';
+import Problemlist from './assets/Problemlist';
 
 function App() {
   return(
@@ -17,6 +18,7 @@ function App() {
         <Route path='/Studentlogin' element={<StudentLogin/>}></Route>
         <Route path='/Studenthome' element={<StudentHome/>}></Route>
         <Route path='/Aboutus' element={<AboutUs/>}></Route>
+        <Route path='/problemlist' element={<Problemlist/>}></Route>
       </Routes>
   </div>
   );

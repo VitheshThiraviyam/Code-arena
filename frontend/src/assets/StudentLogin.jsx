@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const StudentLogin = () => {
@@ -17,7 +18,6 @@ const StudentLogin = () => {
     console.log('Register Number:', registerNumber);
     console.log('Password:', password);
 
-    // Clear fields after submission
     setRegisterNumber('');
     setPassword('');
     setError('');
@@ -29,6 +29,7 @@ const StudentLogin = () => {
         <h1 className="title">Code Arena</h1>
         <h2>Student Login</h2>
         <form onSubmit={handleSubmit}>
+          
           <div className="input-container">
             <input
               type="text"
@@ -64,6 +65,10 @@ const StudentLogin = () => {
           <button type="submit" className="submit-button">
             Login
           </button>
+          <div className='logins'>
+          <p>Are you are a new student ? </p>
+          <Link to='/sregister'>Register</Link>
+          </div>
         </form>
       </div>
     </div>

@@ -7,6 +7,8 @@ import StudentHome from './assets/Studenthome';
 import AboutUs from './assets/AboutUs';
 import Header from './assets/Header';
 import Problemlist from './assets/Problemlist';
+import Footer from './assets/Footer';
+import Studentregister from './assets/Studentregister';
 
 function App() {
   return(
@@ -19,7 +21,9 @@ function App() {
         <Route path='/Studenthome' element={<StudentHome/>}></Route>
         <Route path='/Aboutus' element={<AboutUs/>}></Route>
         <Route path='/problemlist' element={<Problemlist/>}></Route>
+        <Route path='/sregister' element={<Studentregister/>}></Route>
       </Routes>
+      <Footer/>
   </div>
   );
 }

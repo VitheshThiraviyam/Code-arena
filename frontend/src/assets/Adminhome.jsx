@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "./AdminHome.css";
-
+import './Adminhome.css';
 const AdminHome = () => {
   const [problems, setProblems] = useState([]);
   const [problemTitle, setProblemTitle] = useState("");

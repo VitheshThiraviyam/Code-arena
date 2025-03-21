@@ -16,7 +16,7 @@ const StudentRegister = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/studentlogin', {
+      const response = await fetch('http://localhost:5000/studentregister', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 

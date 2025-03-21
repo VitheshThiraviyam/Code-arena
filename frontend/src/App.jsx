@@ -9,6 +9,7 @@ import Header from './assets/Header';
 import Problemlist from './assets/Problemlist';
 import Footer from './assets/Footer';
 import Studentregister from './assets/Studentregister';
+import AdminHome from './assets/Adminhome';
 
 function App() {
   return(
@@ -22,6 +23,7 @@ function App() {
         <Route path='/Aboutus' element={<AboutUs/>}></Route>
         <Route path='/problemlist' element={<Problemlist/>}></Route>
         <Route path='/sregister' element={<Studentregister/>}></Route>
+        <Route path='/Adminhome' element={<AdminHome/>}></Route>
       </Routes>
       <Footer/>
   </div>

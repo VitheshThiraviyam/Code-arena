@@ -6,13 +6,14 @@ import { python } from "@codemirror/lang-python";
 import "./Codeeditor.css";
 
 const defaultFiles = {
+    c: `#include <stdio.h>\n\nint main() {\n    int num = 10; // Declare an integer variable\n    printf("Number: %d\\n", num);\n    return 0;\n}`,
     cpp: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int num = 10; // Declare an integer variable\n    cout << "Number: " << num << endl;\n    return 0;\n}`,
     java: `public class Main {\n    public static void main(String[] args) {\n        int num = 10; // Declare an integer variable\n        System.out.println("Number: " + num);\n    }\n}`,
     python3: `# Declare a variable\nnum = 10\nprint("Number:", num)`
 };
 
 const Codeeditor = () => {
-    const [language, setLanguage] = useState("cpp");
+    const [language, setLanguage] = useState("c");
     const [code, setCode] = useState(defaultFiles[language]);
     const [output, setOutput] = useState("");
     const [error, setError] = useState("");
@@ -48,6 +49,7 @@ const Codeeditor = () => {
     return (
         <div className="editor-container">
             <select onChange={handleLanguageChange} className="language-select" value={language}>
+                <option value="c">C</option>
                 <option value="cpp">C++</option>
                 <option value="java">Java</option>
                 <option value="python3">Python</option>
@@ -55,7 +57,7 @@ const Codeeditor = () => {
             <CodeMirror
                 value={code}
                 height="300px"
-                extensions={[language === "cpp" ? cpp() : language === "java" ? java() : python()]}
+                extensions={[cpp(), java(), python()].find(ext => language !== "java" || ext === java())}
                 onChange={(value) => setCode(value)}
                 className="code-editor"
             />

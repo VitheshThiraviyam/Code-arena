@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 require('dotenv').config();
+const axios = require("axios");
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -52,6 +53,20 @@ app.post('/studentregister', async (req, res) => {
         res.status(500).json({ message: "Server error", error });
     }
 });
+app.post("/run", async (req, res) => {
+  const { code, language } = req.body;
 
+  try {
+      const response = await axios.post("https://emkc.org/api/v2/piston/execute", {
+          language: language,
+          version: "*",
+          files: [{ content: code }]
+      });
+
+      res.json({ output: response.data.run.stdout, error: response.data.run.stderr });
+  } catch (error) {
+      res.status(500).json({ error: "Execution failed" });
+  }
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

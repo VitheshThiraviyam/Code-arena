@@ -47,6 +47,9 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
+      <footer className="about-footer">
+        <p>Designed and Developed by 23CSEB31 Abishek Guhan P and 23CSEB61 Vithesh</p>
+      </footer>
     </div>
   );
 };

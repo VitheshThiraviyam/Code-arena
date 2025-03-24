@@ -49,3 +49,17 @@
   font-size: 1em;
   line-height: 1.6;
 }
+.about-footer {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 1rem;
+  color: #007bff;
+  background: white;
+  border-radius: 5px;
+  text-align: center;
+}
+.about-footer p{
+  color: #007bff;
+  font-size: 1rem;
+}
+

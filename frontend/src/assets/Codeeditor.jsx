@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
 import { java } from "@codemirror/lang-java";
@@ -17,6 +17,9 @@ const Codeeditor = ({ problemTitle, problemDescription }) => {
     const [code, setCode] = useState(defaultFiles[language]);
     const [output, setOutput] = useState("");
     const [error, setError] = useState("");
+    const [dividerPos, setDividerPos] = useState(50); // Initial 50% split
+
+    const isDragging = useRef(false);
 
     const handleRun = async () => {
         setOutput("Running...");
@@ -46,36 +49,50 @@ const Codeeditor = ({ problemTitle, problemDescription }) => {
         setCode(defaultFiles[newLang]);
     };
 
+    const startDragging = () => {
+        isDragging.current = true;
+    };
+
+    const stopDragging = () => {
+        isDragging.current = false;
+    };
+
+    const handleDragging = (e) => {
+        if (!isDragging.current) return;
+        const newWidth = (e.clientX / window.innerWidth) * 100;
+        if (newWidth > 20 && newWidth < 80) {
+            setDividerPos(newWidth);
+        }
+    };
+
     return (
-        <div className="editor-container">
-            {/* Top Section: Problem Description & Code Editor */}
+        <div className="editor-container" onMouseMove={handleDragging} onMouseUp={stopDragging}>
             <div className="top-container">
-                <div className="problem-section">
+                <div className="problem-section" style={{ width: `${dividerPos}%` }}>
                     <h2>{problemTitle || "Problem Title"}</h2>
                     <p>{problemDescription || "Problem description will be displayed here."}</p>
                 </div>
 
-                <div className="code-editor-section">
+                <div className="divider" onMouseDown={startDragging} />
+
+                <div className="code-editor-section" style={{ width: `${100 - dividerPos}%` }}>
                     <select onChange={handleLanguageChange} className="language-select" value={language}>
                         <option value="c">C</option>
                         <option value="cpp">C++</option>
                         <option value="java">Java</option>
                         <option value="python3">Python</option>
                     </select>
-                    <div className="editor-wrapper">
-                        <CodeMirror
-                            value={code}
-                            height="300px"
-                            extensions={[cpp(), java(), python()].find(ext => language !== "java" || ext === java())}
-                            onChange={(value) => setCode(value)}
-                            className="code-editor"
-                        />
-                    </div>
+                    <CodeMirror
+                        value={code}
+                        height="100%"
+                        extensions={[cpp(), java(), python()].find(ext => language !== "java" || ext === java())}
+                        onChange={(value) => setCode(value)}
+                        className="code-editor"
+                    />
                     <button onClick={handleRun} className="run-button">Run Code</button>
                 </div>
             </div>
 
-            {/* Bottom Section: Output */}
             <div className="output-container">
                 {error && <pre className="error-box">{error}</pre>}
                 <pre className="output-box">{output}</pre>

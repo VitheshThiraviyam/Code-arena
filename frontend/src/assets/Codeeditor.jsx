@@ -62,13 +62,15 @@ const Codeeditor = ({ problemTitle, problemDescription }) => {
                         <option value="java">Java</option>
                         <option value="python3">Python</option>
                     </select>
-                    <CodeMirror
-                        value={code}
-                        height="100%"
-                        extensions={[cpp(), java(), python()].find(ext => language !== "java" || ext === java())}
-                        onChange={(value) => setCode(value)}
-                        className="code-editor"
-                    />
+                    <div className="editor-wrapper">
+                        <CodeMirror
+                            value={code}
+                            height="300px"
+                            extensions={[cpp(), java(), python()].find(ext => language !== "java" || ext === java())}
+                            onChange={(value) => setCode(value)}
+                            className="code-editor"
+                        />
+                    </div>
                     <button onClick={handleRun} className="run-button">Run Code</button>
                 </div>
             </div>

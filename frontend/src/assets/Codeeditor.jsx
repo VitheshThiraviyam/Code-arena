@@ -48,31 +48,32 @@ const Codeeditor = ({ problemTitle, problemDescription }) => {
 
     return (
         <div className="editor-container">
-            {/* Left Side - Problem Description */}
-            <div className="problem-section">
-                <h2>{problemTitle || "Problem Title"}</h2>
-                <p>{problemDescription || "Problem description will be displayed here."}</p>
+            {/* Top Section: Problem Description & Code Editor */}
+            <div className="top-container">
+                <div className="problem-section">
+                    <h2>{problemTitle || "Problem Title"}</h2>
+                    <p>{problemDescription || "Problem description will be displayed here."}</p>
+                </div>
+
+                <div className="code-editor-section">
+                    <select onChange={handleLanguageChange} className="language-select" value={language}>
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                        <option value="python3">Python</option>
+                    </select>
+                    <CodeMirror
+                        value={code}
+                        height="100%"
+                        extensions={[cpp(), java(), python()].find(ext => language !== "java" || ext === java())}
+                        onChange={(value) => setCode(value)}
+                        className="code-editor"
+                    />
+                    <button onClick={handleRun} className="run-button">Run Code</button>
+                </div>
             </div>
 
-            {/* Right Side - Code Editor */}
-            <div className="code-editor-section">
-                <select onChange={handleLanguageChange} className="language-select" value={language}>
-                    <option value="c">C</option>
-                    <option value="cpp">C++</option>
-                    <option value="java">Java</option>
-                    <option value="python3">Python</option>
-                </select>
-                <CodeMirror
-                    value={code}
-                    height="300px"
-                    extensions={[cpp(), java(), python()].find(ext => language !== "java" || ext === java())}
-                    onChange={(value) => setCode(value)}
-                    className="code-editor"
-                />
-                <button onClick={handleRun} className="run-button">Run Code</button>
-            </div>
-
-            {/* Bottom - Output Section */}
+            {/* Bottom Section: Output */}
             <div className="output-container">
                 {error && <pre className="error-box">{error}</pre>}
                 <pre className="output-box">{output}</pre>

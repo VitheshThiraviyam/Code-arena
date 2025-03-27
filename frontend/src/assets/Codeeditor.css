@@ -14,6 +14,7 @@
     flex: 1;
     height: 75%;
     position: relative;
+<<<<<<< HEAD
 }
 
 /* Problem description (left side) */
@@ -42,6 +43,36 @@
     position: relative;
 }
 
+=======
+}
+
+/* Problem description (left side) */
+.problem-section {
+    padding: 20px;
+    overflow-y: auto;
+    background: #ffffff;
+    border-right: 2px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Code Editor (right side) */
+.code-editor-section {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+}
+
+/* Resizable Divider */
+.divider {
+    width: 5px;
+    background: #007bff;
+    cursor: ew-resize;
+    position: relative;
+}
+
+>>>>>>> 626f15f2cfb27bd701f6ea9c50e4b70fd7ac6194
 .divider:hover {
     background: #0056b3;
 }
@@ -99,6 +130,29 @@
     white-space: pre-wrap;
     font-family: monospace;
     overflow-x: auto;
+<<<<<<< HEAD
+=======
+}
+
+.error-box {
+    color: red;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .top-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .problem-section, .code-editor-section {
+        flex: none;
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #ddd;
+    }
+>>>>>>> 626f15f2cfb27bd701f6ea9c50e4b70fd7ac6194
 }
 
 .error-box {

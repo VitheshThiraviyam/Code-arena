@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const Student = require('./models/student');
+const Faculty = require('./models/Faculty');
 
 mongoose.connect("mongodb+srv://vithyflims:5d2rsQAxqHljuJfG@vcet-code.b6avj.mongodb.net/?retryWrites=true&w=majority&appName=vcet-code")
     .then(() => console.log("Connected to DB"))
@@ -68,5 +69,33 @@ app.post("/run", async (req, res) => {
       res.status(500).json({ error: "Execution failed" });
   }
 });
+app.post("/facultylogin", async (req, res) => {
+  const { staffid, password } = req.body;
+
+  try {
+    console.log("Login Request Received:", req.body);
+
+    const faculty = await Faculty.findOne({ staffid });
+    if (!faculty) {
+      console.log("Staff ID not found in DB");
+      return res.status(400).json({ message: "Invalid staff ID" });
+    }
+
+    console.log("DB Password:", faculty.password);
+    console.log("Entered Password:", password);
+
+    if (faculty.password !== password) {
+      console.log("Password Mismatch!");
+      return res.status(400).json({ message: "Invalid password" });
+    }
+
+    console.log("Login Successful!");
+    res.json({ message: "Login successful", facultyName: faculty.name });
+  } catch (error) {
+    console.error("Server Error:", error);
+    res.status(500).json({ message: "Server error", error });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

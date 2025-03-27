@@ -1,28 +1,41 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 const FacultyLogin = () => {
-  const [registerNumber, setRegisterNumber] = useState('');
+  const [staffid, setStaffId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!registerNumber || !password) {
+  
+    if (!staffid || !password) {
       setError('Both fields are required');
       return;
     }
-
-    console.log('Register Number:', registerNumber);
-    console.log('Password:', password);
-
-    // Clear fields after submission
-    setRegisterNumber('');
-    setPassword('');
-    setError('');
+  
+    try {
+      const response = await fetch('http://localhost:5000/facultylogin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ staffid, password })
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        alert(data.message);
+        navigate('/Adminhome', { state: { facultyName: data.facultyName} });
+      } else {
+        setError(data.message || 'Login Failed');
+      }
+  
+    } catch (err) {
+      setError('Server Error, please try again later');
+    }
   };
-
+  
   return (
     <div className="login-wrapper">
       <div className="login-container">
@@ -32,18 +45,15 @@ const FacultyLogin = () => {
           <div className="input-container">
             <input
               type="text"
-              id="registerNumber"
-              value={registerNumber}
-              onChange={(e) => setRegisterNumber(e.target.value)}
+              id="staffId"
+              value={staffid}
+              onChange={(e) => setStaffId(e.target.value)}
               className="input-field"
-              placeholder='Staff id'
+              placeholder="Staff ID"
               required
             />
-            <label htmlFor="registerNumber" className={registerNumber ? 'active' : ''}>
-              
-            </label>
           </div>
-
+  
           <div className="input-container">
             <input
               type="password"
@@ -51,16 +61,13 @@ const FacultyLogin = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="input-field"
-              placeholder='Password'
+              placeholder="Password"
               required
             />
-            <label htmlFor="password" className={password ? 'active' : ''}>
-              
-            </label>
           </div>
-
+  
           {error && <p className="error-message">{error}</p>}
-
+  
           <button type="submit" className="submit-button">
             Login
           </button>

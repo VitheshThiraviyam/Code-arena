@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import './Adminhome.css';
+
 const AdminHome = () => {
+  const location = useLocation();
+  const { facultyName } = location.state || { facultyName: "Admin" };
+
   const [problems, setProblems] = useState([]);
   const [problemTitle, setProblemTitle] = useState("");
   const [problemDescription, setProblemDescription] = useState("");
@@ -11,7 +16,15 @@ const AdminHome = () => {
   const [dueTime, setDueTime] = useState("");
 
   const addProblem = () => {
-    if (problemTitle && problemDescription && sampleInput && sampleOutput && date && startTime && dueTime) {
+    if (
+      problemTitle &&
+      problemDescription &&
+      sampleInput &&
+      sampleOutput &&
+      date &&
+      startTime &&
+      dueTime
+    ) {
       setProblems([
         ...problems,
         { problemTitle, problemDescription, sampleInput, sampleOutput, date, startTime, dueTime }
@@ -34,43 +47,83 @@ const AdminHome = () => {
     <div className="admin-home-wrapper">
       <div className="admin-content-card">
         <h2 className="admin-title">Problem Management Dashboard</h2>
-
+        <h3>Welcome, {facultyName}!</h3>
         <div className="form-group">
           <label className="form-label">Problem Title</label>
-          <input className="form-input" value={problemTitle} onChange={(e) => setProblemTitle(e.target.value)} placeholder="Enter problem title" />
+          <input
+            className="form-input"
+            value={problemTitle}
+            onChange={(e) => setProblemTitle(e.target.value)}
+            placeholder="Enter problem title"
+          />
         </div>
 
         <div className="form-group">
           <label className="form-label">Problem Description</label>
-          <textarea className="form-input text-area" value={problemDescription} onChange={(e) => setProblemDescription(e.target.value)} placeholder="Enter problem description" />
+          <textarea
+            className="form-input text-area"
+            value={problemDescription}
+            onChange={(e) => setProblemDescription(e.target.value)}
+            placeholder="Enter problem description"
+          />
         </div>
 
         <div className="form-group">
           <label className="form-label">Sample Input</label>
-          <textarea className="form-input text-area" value={sampleInput} onChange={(e) => setSampleInput(e.target.value)} placeholder="Enter sample input" />
+          <textarea
+            className="form-input text-area"
+            value={sampleInput}
+            onChange={(e) => setSampleInput(e.target.value)}
+            placeholder="Enter sample input"
+          />
         </div>
 
         <div className="form-group">
           <label className="form-label">Sample Output</label>
-          <textarea className="form-input text-area" value={sampleOutput} onChange={(e) => setSampleOutput(e.target.value)} placeholder="Enter sample output" />
+          <textarea
+            className="form-input text-area"
+            value={sampleOutput}
+            onChange={(e) => setSampleOutput(e.target.value)}
+            placeholder="Enter sample output"
+          />
         </div>
 
         <div className="form-group">
           <label className="form-label">Date</label>
-          <input className="form-input" type="date" value={date} onChange={(e) => setDate(e.target.value)} placeholder="Date" />
+          <input
+            className="form-input"
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            placeholder="Date"
+          />
         </div>
 
         <div className="form-group">
           <label className="form-label">Starting Time</label>
-          <input className="form-input" type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} placeholder="Starting Time" />
+          <input
+            className="form-input"
+            type="time"
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+            placeholder="Starting Time"
+          />
         </div>
 
         <div className="form-group">
           <label className="form-label">Due Time</label>
-          <input className="form-input" type="time" value={dueTime} onChange={(e) => setDueTime(e.target.value)} placeholder="Due Time" />
+          <input
+            className="form-input"
+            type="time"
+            value={dueTime}
+            onChange={(e) => setDueTime(e.target.value)}
+            placeholder="Due Time"
+          />
         </div>
 
-        <button className="submit-button" onClick={addProblem}>Add Problem</button>
+        <button className="submit-button" onClick={addProblem}>
+          Add Problem
+        </button>
 
         <div className="problems-container">
           {problems.map((problem, index) => (
@@ -85,10 +138,18 @@ const AdminHome = () => {
                 <strong>Sample Output:</strong>
                 <pre>{problem.sampleOutput}</pre>
               </div>
-              <div className="deadline-section"><strong>Date:</strong> {problem.date}</div>
-              <div className="deadline-section"><strong>Starting Time:</strong> {problem.startTime}</div>
-              <div className="deadline-section"><strong>Due Time:</strong> {problem.dueTime}</div>
-              <button className="delete-button" onClick={() => deleteProblem(index)}>Delete</button>
+              <div className="deadline-section">
+                <strong>Date:</strong> {problem.date}
+              </div>
+              <div className="deadline-section">
+                <strong>Starting Time:</strong> {problem.startTime}
+              </div>
+              <div className="deadline-section">
+                <strong>Due Time:</strong> {problem.dueTime}
+              </div>
+              <button className="delete-button" onClick={() => deleteProblem(index)}>
+                Delete
+              </button>
             </div>
           ))}
         </div>
